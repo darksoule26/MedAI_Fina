@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs - MED.ai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #0056b3;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .sidebar {
+            background-color: #f1f1f1;
+            padding: 20px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        .sidebar h5 {
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .sidebar a:hover {
+            color: #0056b3;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">MED.ai</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/docs">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/chatbot">Chat Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <!-- Page layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 sidebar">
+                <h5>MODELS</h5>
+                <a href="#" onclick="showModelInfo('ocular')">Ocular Scan Model</a>
+                <a href="#" onclick="showModelInfo('xray')">X-Ray Scan Model</a>
+                <a href="#" onclick="showModelInfo('skin')">Skin Disease Model</a>
+                <a href="#" onclick="showModelInfo('heart')">Heart Disease Model</a>
+                <!-- Add more models here -->
+            </nav>
+
+            <!-- Content Area -->
+            <main class="col-md-10 content">
+                <div id="model-info">
+                    <h2>Welcome to the MED.ai Models Documentation</h2>
+                    <p>Click on a model from the sidebar to view its detailed information.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="mt-5">
+        <div class="container">
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 MED.ai. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showModelInfo(model) {
+            var content = '';
+
+            if (model === 'ocular') {
+                content = `
+                    <h2>Ocular Scan Model</h2>
+                    <p>This model assists in diagnosing eye conditions based on retinal scans.</p>
+                    <img src="path/to/ocular_image.jpg" class="img-fluid" alt="Ocular Scan">
+                    <h3>Performance Metrics</h3>
+                    <p>Accuracy: 95%<br>Precision: 92%<br>Recall: 93%</p>
+                    <!-- Add more info and images about the model here -->
+                `;
+            } else if (model === 'xray') {
+                content = `
+                    <h2>X-Ray Scan Model</h2>
+                    <p>This model identifies lung-related diseases from chest X-rays, including pneumonia and COVID-19.</p>
+                    <img src="path/to/xray_image.jpg" class="img-fluid" alt="X-Ray Scan">
+                    <h3>Performance Metrics</h3>
+                    <p>Accuracy: 97%<br>Precision: 95%<br>Recall: 96%</p>
+                    <!-- Add more info and images about the model here -->
+                `;
+            } else if (model === 'skin') {
+                content = `
+                    <h2>Skin Disease Model</h2>
+                    <p>This model helps in diagnosing various skin conditions using image recognition.</p>
+                    <img src="/static/images/skin.png" class="img-fluid" alt="Skin Disease">
+                    <h3>Dataset Information</h3>
+                    <p><strong>Dataset Link</strong>: 
+    <a href="https://www.kaggle.com/datasets/subirbiswas19/skin-disease-dataset" target="_blank">
+        Skin Disease Dataset on Kaggle
+    </a>
+</p>
+                        <ol>
+                            <li>Cellulitis</li>
+                            <li>Impetigo</li>
+                            <li>Athlete's Foot</li>
+                            <li>Nail Fungus</li>
+                            <li>Ringworm</li>
+                            <li>Cutaneous Larva Migrans</li>
+                            <li>Chickenpox</li>
+                            <li>Shingles</li>
+                        </ol>
+                    </p>
+                    <h3>Model Information</h3>
+                    <p><strong>Base Model</strong>: ResNet50 (Pre-trained on ImageNet)</p>
+                    <p><strong>Input Shape</strong>: (224, 224, 3)</p>
+                    <p><strong>Custom Layers:</strong>
+                        <ul>
+                            <li>GlobalAveragePooling2D for dimensionality reduction</li>
+                            <li>Dense layer with 512 units and ReLU activation</li>
+                            <li>Output layer with softmax activation and 8 units (one for each class)</li>
+                        </ul>
+                    </p>
+                    <h3>Model Performance</h3>
+                    <p>The model was trained using 12 epochs, with EarlyStopping and ModelCheckpoint callbacks to prevent overfitting.</p>
+                    <h4>Performance Metrics:</h4>
+                    <p>
+                        <strong>Training Accuracy:</strong> 99.98%<br>
+                        <strong>Validation Accuracy:</strong> 96.713%<br>
+                        <strong>Training Loss:</strong> 0.021%<br>
+                        <strong>Validation Loss:</strong> 0.08%
+                    </p>
+                    <h4>Graphical Representation</h4>
+                    <p>Below are the plots showing training and validation accuracy and loss:</p>
+                    <img src="/static/images/acc.png" class="img-fluid" alt="Training/Validation Accuracy">
+                    <img src="/static/images/loss.png" class="img-fluid" alt="Training/Validation Loss ">
+                `;
+
+            } else if (model === 'heart') {
+                content = `
+                    <h2>Heart Disease Model</h2>
+                    <p>This model predicts the likelihood of heart diseases based on various health parameters.</p>
+                    <img src="path/to/heart_image.jpg" class="img-fluid" alt="Heart Disease Model">
+                    <h3>Performance Metrics</h3>
+                    <p>Accuracy: 92%<br>Precision: 89%<br>Recall: 90%</p>
+                    <!-- Add more info and images about the model here -->
+                `;
+            }
+
+            document.getElementById('model-info').innerHTML = content;
+        }
+    </script>
+</body>
+</html>
